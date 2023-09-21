@@ -1,0 +1,22 @@
+.movie_detail {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  padding: 40px;
+}
+
+.movie_detail_data {
+  padding-right: 30px;
+}
+
+.movie_detail_data hr {
+  margin: 20px 0px;
+}
+
+.movie-list-title {
+  font-family: 'Arial';
+}
+.movie_detail_backdrop img {
+  max-width: 100%; /* Giới hạn chiều rộng tối đa là 100% của phần tử chứa */
+  max-height: 400px; /* Giới hạn chiều cao tối đa là 400px */
+  width: auto; /* Đảm bảo tỷ lệ khung hình được giữ nguyên */
+}

@@ -35,7 +35,7 @@ export default function Banner() {
       className="banner"
       style={{
         backgroundSize: 'cover',
-        backgroundImage: `url(https://image.tmdb.org/t/p/original/${movie?.backdrop_path})`,
+        backgroundImage: `linear-gradient(270deg, transparent, rgba(37, 37, 37, 0.61), #111), url(https://image.tmdb.org/t/p/original/${movie?.backdrop_path})`,
         backgroundPosition: 'center center',
       }}
     >

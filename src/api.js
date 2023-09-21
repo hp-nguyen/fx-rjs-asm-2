@@ -1,6 +1,7 @@
 import axios from 'axios';
+export const API_KEY = '504b85f6fe0a10a9c7f35945e14e7ddf';
 
-const API_KEY = '96fdb83a0dd8bd095526e86d6d9c9bed';
+// const API_KEY = '96fdb83a0dd8bd095526e86d6d9c9bed';
 
 // Tạo một phiên bản Axios với baseURL của API TMDb
 const instance = axios.create({

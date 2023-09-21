@@ -34,7 +34,7 @@ export default function Navbar() {
         <div className="nav-icon-wrap nav-search-icon">
           <svg
             className="svg-inline--fa fa-search fa-w-16"
-            fill={!show ? '#000' : '#ccc'}
+            fill={'#ccc'}
             aria-hidden="true"
             data-prefix="fas"
             data-icon="search"

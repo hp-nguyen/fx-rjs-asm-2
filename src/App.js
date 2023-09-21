@@ -8,7 +8,6 @@ import {
 import Browse from './pages/browse/Browse';
 import Search from './pages/search/Search';
 
-
 function App() {
 	return (
 		<BrowserRouter>

@@ -13,9 +13,6 @@
   transition-timing-function: ease-in;
   transition: all 0.5s;
 }
-body {
-  height: 3000px;
-}
 
 .nav-black {
   background-color: #111;

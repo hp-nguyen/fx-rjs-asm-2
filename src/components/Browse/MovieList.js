@@ -10,9 +10,10 @@ const movies_limit = 10;
 export default function MovieList({ title, fetchUrl, isVertical = false }) {
   // State lưu trữ danh sách các bộ phim
   const [movies, setMovies] = useState([]);
-  const [trailerUrl, setTrailerUrl] = useState('');
   // State lưu trữ phim được chọn
   const [selectedMovie, setSelectedMovie] = useState(null);
+  // State lưu trữ key của trailer hoặc teaser của phim được chọn
+  const [trailerKey, setTrailerKey] = useState('');
   // State lưu trữ backdrop của phim được chọn
   const [backdrop, setBackdrop] = useState('');
 
@@ -39,13 +40,19 @@ export default function MovieList({ title, fetchUrl, isVertical = false }) {
     } else {
       // Hiển thị phần detail khi chọn 1 phim
       setSelectedMovie(movie);
-      setBackdrop(movie['backdrop_path']);
+      // Lấy key của trailer hoặc teaser
       movieTrailer(movie?.title || '')
         .then(url => {
           const urlParams = new URLSearchParams(new URL(url).search);
-          setTrailerUrl(urlParams.get('v'));
+          setTrailerKey(urlParams.get('v'));
         })
-        .catch(error => console.error(error));
+        .catch(error => {
+          // Xử lý lỗi khi không lấy được key của trailer
+          console.error(error);
+          setTrailerKey('');
+          // Lấy backdrop thay thế cho trailer
+          setBackdrop(movie['backdrop_path']);
+        });
     }
   };
 
@@ -72,7 +79,7 @@ export default function MovieList({ title, fetchUrl, isVertical = false }) {
       {selectedMovie && (
         <MovieDetail
           movieData={selectedMovie}
-          movieTrailer={trailerUrl}
+          movieTrailer={trailerKey}
           backdropImage={backdrop}
         />
       )}

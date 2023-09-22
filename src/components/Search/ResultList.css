@@ -1,0 +1,14 @@
+.result-list {
+  color: #fff;
+  padding: 0 24px;
+}
+.result-list-title {
+  margin-top: 32px;
+  margin-bottom: 16px;
+}
+.movies-list {
+  padding: 0 12px;
+  display: grid;
+  grid-template-columns: repeat(9,1fr);
+  gap: 20px 10px;
+}

@@ -1,7 +1,7 @@
 import axios from 'axios';
-export const API_KEY = '504b85f6fe0a10a9c7f35945e14e7ddf';
 
-// const API_KEY = '96fdb83a0dd8bd095526e86d6d9c9bed';
+// API KEY
+export const API_KEY = '96fdb83a0dd8bd095526e86d6d9c9bed';
 
 // Tạo một phiên bản Axios với baseURL của API TMDb
 const instance = axios.create({
@@ -35,7 +35,8 @@ export const requests = {
   fetchDocumentaries: `/discover/movie?api_key=${API_KEY}&with_genres=99`,
 
   // Path cho tìm kiếm phim dựa trên từ khóa
-  fetchSearch: query => `/search/movie?api_key=${API_KEY}&language=en-US&query=${query}`,
+  fetchSearch: query =>
+    `/search/movie?api_key=${API_KEY}&language=en-US&query=${query}`,
 };
 
 // Hàm fetchData dùng để gửi yêu cầu API và nhận dữ liệu từ phản hồi

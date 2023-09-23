@@ -12,30 +12,6 @@
   padding: 20px;
 }
 
-/* .row_posters::-webkit-scrollbar {
-	display: none;
-} */
-
-.row_poster {
-  object-fit: cover;
-  width: 100%;
-  max-height: 130px;
-  cursor: pointer;
-  transition: transform 450ms;
-}
-
-.row_poster:hover {
-  transform: scale(1.1);
-}
-
-.row_posterLarge {
-  max-height: 250px;
-}
-
-.row_posterLarge:hover {
-  transform: scale(1.11);
-}
-
 /* Scroll 2 */
 .sc2::-webkit-scrollbar {
   width: 5px;

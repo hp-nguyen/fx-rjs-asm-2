@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { fetchData } from '../../api';
 import MovieDetail from './MovieDetail';
 import './MovieList.css';
+import MovieItem from './MovieItem';
 
-const base_url = 'https://image.tmdb.org/t/p/original';
 const movies_limit = 10;
 
 export default function MovieList({ title, fetchUrl, isVertical = false }) {
@@ -65,14 +65,11 @@ export default function MovieList({ title, fetchUrl, isVertical = false }) {
       <h2 className="movie-list-title">{title}</h2>
       <div className="row_posters sc2">
         {movies.map(movie => (
-          <img
+          <MovieItem
             key={movie.id}
+            movie={movie}
             onClick={() => handleClick(movie)}
-            className={`row_poster ${isVertical && 'row_posterLarge'}`}
-            src={`${base_url}${
-              isVertical ? movie.poster_path : movie.backdrop_path
-            }`}
-            alt={movie.name}
+            isVertical={isVertical}
           />
         ))}
       </div>

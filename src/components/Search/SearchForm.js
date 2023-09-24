@@ -36,6 +36,7 @@ export default function SearchForm({ onSearch }) {
       </div>
       <div className="btn-wrap">
         <button
+          type="reset"
           onClick={handleResetSearch}
           className="reset-btn search-form-btn">
           RESET

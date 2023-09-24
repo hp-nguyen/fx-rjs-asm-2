@@ -8,6 +8,8 @@ import './ResultList.css';
 export default function ResultList({ query }) {
   // State lưu trữ danh sách các bộ phim
   const [movies, setMovies] = useState([]);
+  // State lưu trữ kết quả có tìm thấy bộ phim nào hay không
+  const [hasResults, setHasResults] = useState(true);
   // State lưu trữ phim được chọn
   const [selectedMovie, setSelectedMovie] = useState(null);
   // State lưu trữ key của trailer hoặc teaser của phim được chọn
@@ -20,10 +22,14 @@ export default function ResultList({ query }) {
     // Nếu có từ khóa thì tiến hành search
     fetchData(requests.fetchSearch(query))
       .then(respone => setMovies(respone.data.results))
-      .catch(err => console.error('Error fetching search results:', err));
+      .catch(err => {
+        setMovies([]);
+        console.error('Error fetching search results:', err);
+      })
+      .finally(() => setHasResults(movies.length > 0)); // Update hasResults sau khi search xong movies
     // Reset selected movie khi search phim mới
     setSelectedMovie(null);
-  }, [query]);
+  }, [query, movies.length]);
 
   // Xử lý sự kiện khi click vào một phim
   const handleClick = movie => {
@@ -65,17 +71,21 @@ export default function ResultList({ query }) {
           backdropImage={backdrop}
         />
       )}
-      <ul className="movies-list">
-        {movies.map(movie => (
-          <li key={movie.id}>
-            <MovieItem
-              movie={movie}
-              isVertical={true}
-              onClick={() => handleClick(movie)}
-            />
-          </li>
-        ))}
-      </ul>
+      {hasResults ? (
+        <ul className="movies-list">
+          {movies.map(movie => (
+            <li key={movie.id}>
+              <MovieItem
+                movie={movie}
+                isVertical={true}
+                onClick={() => handleClick(movie)}
+              />
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>No films found</p>
+      )}
     </div>
   );
 }
